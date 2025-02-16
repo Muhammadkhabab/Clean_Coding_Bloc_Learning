@@ -1,11 +1,9 @@
-import 'package:clean_coding_project/view/auth/login/widgets/email_input_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/log_in_bloc.dart';
 import '../../../config/components/buttons/custom_elevated_button.dart';
 import '../../../config/colors/app_colors.dart';
-import 'widgets/forgot_password.dart' show ForgotPassword;
-import 'widgets/password_input_widget.dart';
+import 'widgets/widgets.dart';
 
 class LogInView extends StatefulWidget {
   const LogInView({super.key});
