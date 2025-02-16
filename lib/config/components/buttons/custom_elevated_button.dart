@@ -38,22 +38,29 @@ class CustomButton extends StatelessWidget {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: backgroundColor,
-          borderRadius: borderRadius ?? BorderRadius.circular(5.0), // Default to 5.0
+          borderRadius:
+              borderRadius ?? BorderRadius.circular(5.0), // Default to 5.0
           border: Border.all(color: backgroundColor, width: 1),
           gradient: gradient,
         ),
-        child: isLoading
-            ? const SizedBox(
-                width: 25,
-                height: 25,
-                child: CircularProgressIndicator(color: Colors.white, strokeCap: StrokeCap.round),
-              )
-            : isIcon && icon != null
+        child:
+            isLoading
+                ? const SizedBox(
+                  width: 25,
+                  height: 25,
+                  child: CircularProgressIndicator(
+                    color: Colors.white,
+                    strokeCap: StrokeCap.round,
+                  ),
+                )
+                : isIcon && icon != null
                 ? icon
                 : Text(
-                    label ?? '',
-                    style: Theme.of(context).textTheme.labelLarge?.copyWith(color: textColor),
-                  ),
+                  label ?? '',
+                  style: Theme.of(
+                    context,
+                  ).textTheme.labelLarge?.copyWith(color: textColor),
+                ),
       ),
     );
   }
