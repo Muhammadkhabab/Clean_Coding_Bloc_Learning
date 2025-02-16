@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../bloc/log_in_bloc.dart';
@@ -18,9 +20,11 @@ class _PasswordInputWidgetState extends State<PasswordInputWidget> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LogInBloc, LogInState>(
-      buildWhen: (current, previous) => previous.isPasswordVisible != current.isPasswordVisible,
+      buildWhen:
+          (current, previous) =>
+              previous.isPasswordVisible != current.isPasswordVisible,
       builder: (context, state) {
-        print('build passs');
+        log('build password');
         return CustomTextField(
           controller: passwordController,
           focusNode: passwordFocusNode,
@@ -28,13 +32,10 @@ class _PasswordInputWidgetState extends State<PasswordInputWidget> {
           label: 'Password',
           obscureText: !state.isPasswordVisible,
           onChanged: (value) {
-            print(value);
+            log(value);
             context.read<LogInBloc>().add(PasswordChange(password: value));
           },
-          prefixIcon: Icon(
-            Icons.lock_outline,
-            color: AppColors.iconColor,
-          ),
+          prefixIcon: Icon(Icons.lock_outline, color: AppColors.iconColor),
           validator: (value) {
             if (value == null || value.isEmpty) {
               return 'Please enter your password';
@@ -45,7 +46,10 @@ class _PasswordInputWidgetState extends State<PasswordInputWidget> {
             return null;
           },
           suffixIcon: IconButton(
-            icon: state.isPasswordVisible ? Icon(Icons.visibility) : Icon(Icons.visibility_off_sharp),
+            icon:
+                state.isPasswordVisible
+                    ? Icon(Icons.visibility)
+                    : Icon(Icons.visibility_off_sharp),
             onPressed: () {
               context.read<LogInBloc>().add(TogglePasswordVisibility());
             },
