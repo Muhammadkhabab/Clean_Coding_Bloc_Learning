@@ -1,7 +1,6 @@
+import 'dart:developer';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../bloc/log_in_bloc.dart';
 import '../../../../config/colors/app_colors.dart';
 import '../../../../config/components/text_fields/custom_text_fields.dart';
@@ -22,25 +21,24 @@ class _EmailInputWidgetState extends State<EmailInputWidget> {
     return BlocBuilder<LogInBloc, LogInState>(
       buildWhen: (current, previous) => false,
       builder: (context, state) {
-        print('build email');
+        log('build email');
         return CustomTextField(
           controller: emailController,
           focusNode: emailFocusNode,
           hint: 'Enter your email',
           keyboardType: TextInputType.emailAddress,
-          prefixIcon: Icon(
-            CupertinoIcons.envelope,
-            color: AppColors.iconColor,
-          ),
+          prefixIcon: Icon(CupertinoIcons.envelope, color: AppColors.iconColor),
           onChanged: (value) {
-            print(value);
+            log(value);
             context.read<LogInBloc>().add(EmailChanged(email: value));
           },
           validator: (value) {
             if (value!.isEmpty) {
               return 'Please enter your email';
             }
-            if (!RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$').hasMatch(value)) {
+            if (!RegExp(
+              r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
+            ).hasMatch(value)) {
               return 'Please enter a valid email address';
             }
             return null;
