@@ -9,10 +9,9 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
-  SplashServices _splashServices = SplashServices();
+  final SplashServices _splashServices = SplashServices();
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _splashServices.checkAuthentication(context);
   }

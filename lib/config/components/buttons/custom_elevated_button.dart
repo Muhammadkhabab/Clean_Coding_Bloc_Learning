@@ -13,8 +13,8 @@ class CustomButton extends StatelessWidget {
   final Widget? icon;
   final BorderRadiusGeometry? borderRadius;
 
-  CustomButton({
-    Key? key,
+  const CustomButton({
+    super.key,
     required this.onPressed,
     this.label,
     this.borderRadius,
@@ -26,7 +26,7 @@ class CustomButton extends StatelessWidget {
     this.isIcon = false,
     this.icon,
     this.gradient,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
