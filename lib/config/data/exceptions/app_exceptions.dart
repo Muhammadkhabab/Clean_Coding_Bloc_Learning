@@ -1,71 +1,114 @@
 /// Base class for custom application exceptions.
 class AppException implements Exception {
-  final String? _message; // Message associated with the exception
-  final String? _prefix; // Prefix for the exception
+  final String message; // User-friendly message
+  final String prefix; // Prefix for categorization
 
   /// Constructor for creating an [AppException] instance.
-  ///
-  /// The [message] parameter represents the message associated with the exception,
-  /// and the [prefix] parameter represents the prefix for the exception.
-  AppException([this._message, this._prefix]);
+  AppException([
+    this.message = 'An unexpected error occurred.',
+    this.prefix = 'Error',
+  ]);
 
   @override
-  String toString() {
-    return '$_prefix: $_message'; // Returns the formatted error message
-  }
+  String toString() => '$prefix: $message'; // Returns a formatted error message
 }
 
-/// Exception class representing a fetch data error during communication.
+/// Exception for data fetch failures.
 class FetchDataException extends AppException {
-  FetchDataException([String? message]) : super(message, 'There was an issue retrieving the data. Please try again.');
+  FetchDataException([String? message])
+    : super(
+        message ??
+            'Unable to fetch data. Please check your connection and try again.',
+        'Network Error',
+      );
 }
 
-/// Exception class representing an unauthorized access error.
+/// Exception for unauthorized access.
 class UnauthorizedException extends AppException {
-  UnauthorizedException([String? message]) : super(message, 'You are not authorized to perform this action.');
+  UnauthorizedException([String? message])
+    : super(
+        message ?? 'You are not authorized. Please log in again.',
+        'Unauthorized',
+      );
 }
 
-/// Exception class representing a bad request error.
+/// Exception for bad requests (e.g., invalid inputs).
 class BadRequestException extends AppException {
-  BadRequestException([String? message]) : super(message, 'The request could not be processed. Please check your input and try again.');
+  BadRequestException([String? message])
+    : super(
+        message ?? 'Invalid request. Please verify your input and try again.',
+        'Bad Request',
+      );
 }
 
-/// Exception class representing an invalid input error.
+/// Exception for invalid user input.
 class InvalidInputException extends AppException {
-  InvalidInputException([String? message]) : super(message, 'The input provided is invalid. Please correct it and try again.');
+  InvalidInputException([String? message])
+    : super(
+        message ?? 'Invalid input detected. Please correct and retry.',
+        'Validation Error',
+      );
 }
 
-/// Exception class representing a no internet connection error.
+/// Exception for no internet connection.
 class NoInternetException extends AppException {
-  NoInternetException([String? message]) : super(message, 'No internet connection. Please check your network and try again.');
+  NoInternetException([String? message])
+    : super(
+        message ??
+            'No internet connection. Please check your network settings.',
+        'Connectivity Issue',
+      );
 }
 
-/// Exception class representing a timeout error.
+/// Exception for request timeouts.
 class TimeoutException extends AppException {
-  TimeoutException([String? message]) : super(message, 'The request took too long to respond. Please try again later.');
+  TimeoutException([String? message])
+    : super(
+        message ?? 'Request timeout. Please try again later.',
+        'Timeout Error',
+      );
 }
 
-/// Exception class representing a server error.
+/// Exception for server errors.
 class ServerException extends AppException {
-  ServerException([String? message]) : super(message, 'Something went wrong on our end. Please try again later.');
+  ServerException([String? message])
+    : super(
+        message ??
+            'Server error. Our team is working on it. Please try again later.',
+        'Server Error',
+      );
 }
 
-/// Exception class representing a forbidden access error.
+/// Exception for forbidden access.
 class ForbiddenException extends AppException {
-  ForbiddenException([String? message]) : super(message, 'You do not have permission to access this resource.');
+  ForbiddenException([String? message])
+    : super(
+        message ?? 'You do not have permission to access this resource.',
+        'Access Denied',
+      );
 }
 
-/// Exception class representing a resource not found error.
+/// Exception for resource not found errors.
 class NotFoundException extends AppException {
-  NotFoundException([String? message]) : super(message, 'The requested resource could not be found.');
+  NotFoundException([String? message])
+    : super(message ?? 'Requested resource not found.', 'Not Found');
 }
 
-/// Exception class representing a conflict error (e.g., duplicate entries).
+/// Exception for conflicts (e.g., duplicate entries).
 class ConflictException extends AppException {
-  ConflictException([String? message]) : super(message, 'There is a conflict with the current state of the resource.');
+  ConflictException([String? message])
+    : super(
+        message ?? 'Conflict detected. Please review your request.',
+        'Conflict Error',
+      );
 }
 
-/// Exception class representing a precondition failure.
+/// Exception for precondition failures.
 class PreconditionFailedException extends AppException {
-  PreconditionFailedException([String? message]) : super(message, 'A required condition was not met. Please check and try again.');
+  PreconditionFailedException([String? message])
+    : super(
+        message ??
+            'A required condition was not met. Please check and try again.',
+        'Precondition Failed',
+      );
 }
