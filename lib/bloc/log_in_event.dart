@@ -23,7 +23,7 @@ class PasswordChange extends LogInEvent {
   List<Object?> get props => [password];
 }
 
-class TogglePasswordVisibility extends LogInEvent{}
+class TogglePasswordVisibility extends LogInEvent {}
 
 class LogInApi extends LogInEvent {
   const LogInApi();
