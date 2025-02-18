@@ -12,9 +12,7 @@ class NetworkApiServices implements BaseApiServices {
     dynamic responseJson;
     try {
       // Make the HTTP GET request with a timeout of 30 seconds
-      final response = await http
-          .delete(Uri.parse(url))
-          .timeout(Duration(seconds: 30));
+      final response = await http.delete(Uri.parse(url)).timeout(Duration(seconds: 30));
 
       // Process the response
       responseJson = returnResponse(response);
@@ -25,23 +23,15 @@ class NetworkApiServices implements BaseApiServices {
       }
     } on SocketException {
       // Handle no internet connection
-      throw NoInternetException(
-        'No internet connection. Please check your network and try again.',
-      );
+      throw NoInternetException('No internet connection. Please check your network and try again.');
     } on TimeoutException {
-      throw TimeoutException(
-        'The request took too long to respond. Please try again later.',
-      );
+      throw TimeoutException('The request took too long to respond. Please try again later.');
     } on http.ClientException {
       // Handle HTTP client errors (e.g., connection issues)
-      throw FetchDataException(
-        'There was an issue retrieving the data. Please try again.',
-      );
+      throw FetchDataException('There was an issue retrieving the data. Please try again.');
     } on FormatException {
       // Handle JSON parsing errors
-      throw InvalidInputException(
-        'The response data is invalid. Please check the server response.',
-      );
+      throw InvalidInputException('The response data is invalid. Please check the server response.');
     } on AppException {
       // Re-throw custom exceptions from returnResponse
       rethrow;
@@ -56,9 +46,7 @@ class NetworkApiServices implements BaseApiServices {
     dynamic responseJson;
     try {
       // Make the HTTP GET request with a timeout of 30 seconds
-      final response = await http
-          .get(Uri.parse(url))
-          .timeout(Duration(seconds: 30));
+      final response = await http.get(Uri.parse(url)).timeout(Duration(seconds: 30));
 
       // Process the response
       responseJson = returnResponse(response);
@@ -69,24 +57,16 @@ class NetworkApiServices implements BaseApiServices {
       }
     } on SocketException {
       // Handle no internet connection
-      throw NoInternetException(
-        'No internet connection. Please check your network and try again.',
-      );
+      throw NoInternetException('No internet connection. Please check your network and try again.');
     } on TimeoutException {
       // Handle request timeout
-      throw TimeoutException(
-        'The request took too long to respond. Please try again later.',
-      );
+      throw TimeoutException('The request took too long to respond. Please try again later.');
     } on http.ClientException {
       // Handle HTTP client errors (e.g., connection issues)
-      throw FetchDataException(
-        'There was an issue retrieving the data. Please try again.',
-      );
+      throw FetchDataException('There was an issue retrieving the data. Please try again.');
     } on FormatException {
       // Handle JSON parsing errors
-      throw InvalidInputException(
-        'The response data is invalid. Please check the server response.',
-      );
+      throw InvalidInputException('The response data is invalid. Please check the server response.');
     } on AppException {
       // Re-throw custom exceptions from returnResponse
       rethrow;
@@ -104,32 +84,31 @@ class NetworkApiServices implements BaseApiServices {
   /// Throws a [FetchDataException] if the network request times out.
   @override
   Future postApi(String url, dynamic data) async {
+    if (kDebugMode) {
+      print("network api response$url");
+      print("network api response$data");
+    }
     dynamic postResponse;
     try {
-      final http.Response response = await http
-          .post(Uri.parse(url), body: data)
-          .timeout(const Duration(seconds: 10));
+      final http.Response response = await http.post(Uri.parse(url), body: data).timeout(const Duration(seconds: 10));
       postResponse = returnResponse(response);
+
+      if (kDebugMode) {
+        print("postResponse api response$postResponse");
+        print("network api response$data");
+      }
     } on SocketException {
       // Handle no internet connection
-      throw NoInternetException(
-        'No internet connection. Please check your network and try again.',
-      );
+      throw NoInternetException('No internet connection. Please check your network and try again.');
     } on TimeoutException {
       // Handle request timeout
-      throw TimeoutException(
-        'The request took too long to respond. Please try again later.',
-      );
+      throw TimeoutException('The request took too long to respond. Please try again later.');
     } on http.ClientException {
       // Handle HTTP client errors (e.g., connection issues)
-      throw FetchDataException(
-        'There was an issue retrieving the data. Please try again.',
-      );
+      throw FetchDataException('There was an issue retrieving the data. Please try again.');
     } on FormatException {
       // Handle JSON parsing errors
-      throw InvalidInputException(
-        'The response data is invalid. Please check the server response.',
-      );
+      throw InvalidInputException('The response data is invalid. Please check the server response.');
     } on AppException {
       // Re-throw custom exceptions from returnResponse
       rethrow;
@@ -144,30 +123,20 @@ class NetworkApiServices implements BaseApiServices {
   Future updateApi(String url, dynamic data) async {
     dynamic postResponse;
     try {
-      final http.Response response = await http
-          .put(Uri.parse(url), body: data)
-          .timeout(const Duration(seconds: 10));
+      final http.Response response = await http.put(Uri.parse(url), body: data).timeout(const Duration(seconds: 10));
       postResponse = returnResponse(response);
     } on SocketException {
       // Handle no internet connection
-      throw NoInternetException(
-        'No internet connection. Please check your network and try again.',
-      );
+      throw NoInternetException('No internet connection. Please check your network and try again.');
     } on TimeoutException {
       // Handle request timeout
-      throw TimeoutException(
-        'The request took too long to respond. Please try again later.',
-      );
+      throw TimeoutException('The request took too long to respond. Please try again later.');
     } on http.ClientException {
       // Handle HTTP client errors (e.g., connection issues)
-      throw FetchDataException(
-        'There was an issue retrieving the data. Please try again.',
-      );
+      throw FetchDataException('There was an issue retrieving the data. Please try again.');
     } on FormatException {
       // Handle JSON parsing errors
-      throw InvalidInputException(
-        'The response data is invalid. Please check the server response.',
-      );
+      throw InvalidInputException('The response data is invalid. Please check the server response.');
     } on AppException {
       // Re-throw custom exceptions from returnResponse
       rethrow;
@@ -205,21 +174,15 @@ class NetworkApiServices implements BaseApiServices {
         throw ConflictException(responseJson['message'] ?? 'Conflict');
       case 412:
         dynamic responseJson = jsonDecode(response.body);
-        throw PreconditionFailedException(
-          responseJson['message'] ?? 'Precondition Failed',
-        );
+        throw PreconditionFailedException(responseJson['message'] ?? 'Precondition Failed');
       case 500:
         dynamic responseJson = jsonDecode(response.body);
-        throw ServerException(
-          responseJson['message'] ?? 'Internal Server Error',
-        );
+        throw ServerException(responseJson['message'] ?? 'Internal Server Error');
       case 503:
         dynamic responseJson = jsonDecode(response.body);
         throw ServerException(responseJson['message'] ?? 'Service Unavailable');
       default:
-        throw FetchDataException(
-          'An unexpected error occurred: ${response.statusCode}',
-        );
+        throw FetchDataException('An unexpected error occurred: ${response.statusCode}');
     }
   }
 }
