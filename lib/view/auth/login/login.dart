@@ -1,8 +1,8 @@
+import 'package:clean_coding_project/repository/auth/auth_repsoitory.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/log_in_bloc.dart';
-import '../../../config/components/buttons/custom_elevated_button.dart';
-import '../../../config/colors/app_colors.dart';
+import 'widgets/submit_button_widgets.dart';
 import 'widgets/widgets.dart';
 
 class LogInView extends StatefulWidget {
@@ -18,14 +18,12 @@ class _LogInViewState extends State<LogInView> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    _logInBloc = LogInBloc();
+    _logInBloc = LogInBloc(authRepository: AuthRepository());
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _logInBloc.close();
   }
@@ -48,7 +46,10 @@ class _LogInViewState extends State<LogInView> {
               key: _logInformKey,
               child: Column(
                 children: [
-                  Text('Sign In', style: Theme.of(context).textTheme.titleLarge),
+                  Text(
+                    'Sign In',
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
                   const SizedBox(height: 68),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
@@ -59,17 +60,7 @@ class _LogInViewState extends State<LogInView> {
                         PasswordInputWidget(),
                         ForgotPassword(),
                         const SizedBox(height: 24),
-                        CustomButton(
-                          onPressed: () {
-                            // if (_logInformKey.currentState?.validate() ?? false) {
-                            //   logInBloc.add(LoginSubmitted()); // ✅ Dispatch event
-                            // }
-                          },
-                          textColor: Colors.white,
-                          backgroundColor: AppColors.primaryColor,
-                          label: 'Login',
-                          width: double.infinity,
-                        ),
+                        SubmitButton(formKey: _logInformKey),
                       ],
                     ),
                   ),
