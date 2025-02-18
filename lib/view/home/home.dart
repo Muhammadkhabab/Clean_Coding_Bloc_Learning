@@ -11,13 +11,15 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Home Screen'),
-      ),
+      appBar: AppBar(title: Text('Home Screen')),
       body: Column(
         children: [
           Icon(Icons.home),
           Text('Home Screen'),
+          Container(
+            decoration: BoxDecoration(color: Colors.red),
+            child: Text('data'),
+          ),
         ],
       ),
     );
