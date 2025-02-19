@@ -15,7 +15,7 @@ class SubmitButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<LogInBloc, LogInState>(
-      listenWhen: (previous, current) => previous.logInApiResponse.status != current.logInApiResponse.status,
+      listenWhen: (current, previous) => current.logInApiResponse != previous.logInApiResponse,
       listener: (context, state) {
         if (state.logInApiResponse.status == Status.error) {
           context.flushBarErrorMessage(message: state.logInApiResponse.message.toString()); // Show error
@@ -29,7 +29,7 @@ class SubmitButton extends StatelessWidget {
         builder: (context, state) {
           return CustomButton(
             onPressed: () {
-              if (formKey.currentState?.validate() ?? false) {
+              if (formKey.currentState!.validate()) {
                 context.read<LogInBloc>().add(LogInApi()); // Dispatch login event
               }
             },
