@@ -1,8 +1,7 @@
 import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:clean_coding_project/config/data/responces/api_responce.dart';
-import 'package:clean_coding_project/repository/auth/auth_repsoitory.dart';
+import 'package:clean_coding_project/repository/auth_repository/auth_api_repository.dart';
 import 'package:equatable/equatable.dart';
 
 import '../model/user/user_model.dart';
@@ -10,8 +9,9 @@ part 'log_in_event.dart';
 part 'log_in_state.dart';
 
 class LogInBloc extends Bloc<LogInEvent, LogInState> {
-  final AuthRepository authRepository;
-  LogInBloc({required this.authRepository}) : super(LogInState()) {
+  AuthApiRepository authApiRepository;
+
+  LogInBloc({required this.authApiRepository}) : super(LogInState()) {
     on<EmailChanged>(_onEmailChange);
     on<PasswordChange>(_onPasswordChange);
     on<TogglePasswordVisibility>(_onPasswordVisibility);
@@ -39,7 +39,7 @@ class LogInBloc extends Bloc<LogInEvent, LogInState> {
     emit(state.copyWith(logInApiResponse: ApiResponse.loading()));
 
     log(data.toString());
-    await authRepository
+    await authApiRepository
         .logInApi(data)
         .then((value) async {
           if (value.error.isNotEmpty) {
@@ -50,7 +50,6 @@ class LogInBloc extends Bloc<LogInEvent, LogInState> {
         })
         .onError((error, stackTrace) {
           emit(state.copyWith(logInApiResponse: ApiResponse.error(error.toString())));
-          log("stack strace" + stackTrace.toString());
         });
   }
 }

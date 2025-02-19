@@ -1,4 +1,4 @@
-import 'package:clean_coding_project/repository/auth/auth_repsoitory.dart';
+import 'package:clean_coding_project/dependency_injection/locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../bloc/log_in_bloc.dart';
@@ -19,7 +19,7 @@ class _LogInViewState extends State<LogInView> {
   @override
   void initState() {
     super.initState();
-    _logInBloc = LogInBloc(authRepository: AuthRepository());
+    _logInBloc = LogInBloc(authApiRepository: getIt());
   }
 
   @override
@@ -33,12 +33,7 @@ class _LogInViewState extends State<LogInView> {
     return BlocProvider(
       create: (_) => _logInBloc,
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          automaticallyImplyLeading: false,
-          scrolledUnderElevation: 0,
-        ),
+        appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0, automaticallyImplyLeading: false, scrolledUnderElevation: 0),
         body: SafeArea(
           child: SingleChildScrollView(
             physics: BouncingScrollPhysics(),
@@ -46,10 +41,7 @@ class _LogInViewState extends State<LogInView> {
               key: _logInformKey,
               child: Column(
                 children: [
-                  Text(
-                    'Sign In',
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
+                  Text('Sign In', style: Theme.of(context).textTheme.titleLarge),
                   const SizedBox(height: 68),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
