@@ -4,7 +4,6 @@ import 'package:clean_coding_project/config/data/responces/api_responce.dart';
 import 'package:clean_coding_project/repository/auth_repository/auth_api_repository.dart';
 import 'package:equatable/equatable.dart';
 
-import '../model/user/user_model.dart';
 part 'log_in_event.dart';
 part 'log_in_state.dart';
 
