@@ -15,13 +15,16 @@ class SubmitButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<LogInBloc, LogInState>(
-      listenWhen: (current, previous) => current.logInApiResponse != previous.logInApiResponse,
+      listenWhen:
+          (current, previous) =>
+              current.logInApiResponse != previous.logInApiResponse,
       listener: (context, state) {
         if (state.logInApiResponse.status == Status.error) {
-          context.flushBarErrorMessage(message: state.logInApiResponse.message.toString()); // Show error
+          context.flushBarErrorMessage(
+            message: state.logInApiResponse.message.toString(),
+          ); // Show error
         }
         if (state.logInApiResponse.status == Status.completed) {
-          context.flushBarSuccessMessage(message: state.logInApiResponse.message.toString()); // Show error
           Navigator.pushNamed(context, RoutesName.home);
         }
       },
@@ -30,10 +33,14 @@ class SubmitButton extends StatelessWidget {
           return CustomButton(
             onPressed: () {
               if (formKey.currentState!.validate()) {
-                context.read<LogInBloc>().add(LogInApi()); // Dispatch login event
+                context.read<LogInBloc>().add(
+                  LogInApi(),
+                ); // Dispatch login event
               }
             },
-            isLoading: state.logInApiResponse.status == Status.loading, // Show loading indicator
+            isLoading:
+                state.logInApiResponse.status ==
+                Status.loading, // Show loading indicator
             textColor: Colors.white,
             backgroundColor: AppColors.primaryColor,
             label: 'Login',
