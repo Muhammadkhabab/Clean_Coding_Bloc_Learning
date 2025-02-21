@@ -12,10 +12,13 @@ class AuthHttpRepository implements AuthApiRepository {
 
   @override
   Future<UserModel> logInApi(dynamic data) async {
-    dynamic response = await _baseApiServices.postApi(AppUrls.loginEndPoinUrl, data);
+    dynamic response = await _baseApiServices.postApi(
+      AppUrls.loginEndPoinUrl,
+      data,
+    );
     log("data repository  ${data.toString()}");
 
-    log("Data Api Reposity" + AppUrls.loginEndPoinUrl);
+    log("Data Api Reposity.... $data {AppUrls.loginEndPoinUrl}");
     return UserModel.fromJson(response);
   }
 }
