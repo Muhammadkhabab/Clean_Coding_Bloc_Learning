@@ -57,6 +57,7 @@ class LogInBloc extends Bloc<LogInEvent, LogInState> {
           } else {
             await SessionController().saveUserPreference(value);
             await SessionController().getUserFromPreference();
+            
             emit(
               state.copyWith(
                 logInApiResponse: const ApiResponse.completed('LOGIN'),
