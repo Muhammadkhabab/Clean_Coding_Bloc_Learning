@@ -7,13 +7,11 @@ class ApiResponse<T> {
 
   const ApiResponse._({required this.status, this.data, this.message});
 
-  const ApiResponse.loading() : this._(status: Status.loading);
+  ApiResponse.loading() : this._(status: Status.loading);
 
-  const ApiResponse.completed(T data)
-    : this._(status: Status.completed, data: data);
+  ApiResponse.completed(T data) : this._(status: Status.completed, data: data);
 
-  const ApiResponse.error(String message)
-    : this._(status: Status.error, message: message);
+  ApiResponse.error(String message) : this._(status: Status.error, message: message);
 
   @override
   String toString() {

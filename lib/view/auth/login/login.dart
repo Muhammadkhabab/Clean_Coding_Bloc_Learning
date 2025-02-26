@@ -1,7 +1,7 @@
 import 'package:clean_coding_project/dependency_injection/locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../bloc/log_in_bloc.dart';
+import '../../../blocs/user_bloc/log_in_bloc.dart';
 import 'widgets/submit_button_widgets.dart';
 import 'widgets/widgets.dart';
 

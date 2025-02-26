@@ -41,7 +41,7 @@ class BadRequestException extends AppException {
       );
 }
 
-/// Exception for invalid user input.
+/// Exception for invalid user_bloc input.
 class InvalidInputException extends AppException {
   InvalidInputException([String? message])
     : super(

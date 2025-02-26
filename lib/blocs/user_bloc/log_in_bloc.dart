@@ -60,7 +60,7 @@ class LogInBloc extends Bloc<LogInEvent, LogInState> {
             
             emit(
               state.copyWith(
-                logInApiResponse: const ApiResponse.completed('LOGIN'),
+                logInApiResponse: ApiResponse.completed('LOGIN'),
               ),
             );
           }

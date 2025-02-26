@@ -3,7 +3,7 @@ import 'package:clean_coding_project/services/session_manager/session_controller
 import 'package:flutter/cupertino.dart';
 import '../../config/routes/routes_name.dart';
 
-/// Handles app startup logic to determine user authentication state
+/// Handles app startup logic to determine user_bloc authentication state
 class SplashServices {
   /// Ensures session is loaded before navigating to the appropriate screen.
   Future<void> checkAuthentication(BuildContext context) async {

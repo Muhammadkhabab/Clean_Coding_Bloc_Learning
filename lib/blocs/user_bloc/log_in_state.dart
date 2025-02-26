@@ -12,7 +12,7 @@ class LogInState extends Equatable {
     this.password = '',
     this.isPasswordVisible = false,
     this.message = '',
-    this.logInApiResponse = const ApiResponse.completed(''),
+    this.logInApiResponse = ApiResponse.completed(),
   });
 
   LogInState copyWith({
@@ -33,11 +33,5 @@ class LogInState extends Equatable {
 
   @override
   // TODO: implement props
-  List<Object?> get props => [
-    email,
-    password,
-    isPasswordVisible,
-    message,
-    logInApiResponse,
-  ];
+  List<Object?> get props => [email, password, isPasswordVisible, message, logInApiResponse];
 }

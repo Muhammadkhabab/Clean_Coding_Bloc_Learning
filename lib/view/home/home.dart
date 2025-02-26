@@ -39,7 +39,7 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 
-  /// Logs the user out and redirects to the login screen.
+  /// Logs the user_bloc out and redirects to the login screen.
   void _logout(BuildContext context) async {
     await SessionController().clearSession();
 

@@ -1,7 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../bloc/log_in_bloc.dart';
+import '../../../../blocs/user_bloc/log_in_bloc.dart';
 import '../../../../config/colors/app_colors.dart';
 import '../../../../config/components/text_fields/custom_text_fields.dart';
 

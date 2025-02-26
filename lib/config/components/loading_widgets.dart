@@ -3,7 +3,7 @@ import 'dart:io' show Platform;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-//custom loading widget, we will used this widget show user some action depending on it's need
+//custom loading widget, we will used this widget show user_bloc some action depending on it's need
 // this widget is generic, we can change it and this change will appear across the app
 class LoadingWidget extends StatelessWidget {
   final double size;

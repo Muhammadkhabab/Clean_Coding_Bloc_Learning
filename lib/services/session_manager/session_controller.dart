@@ -1,9 +1,9 @@
 import 'dart:convert';
-import 'package:clean_coding_project/model/user/user_model.dart';
 import 'package:flutter/cupertino.dart';
+import '../../models/user/user_model.dart';
 import '../storage/local_storage.dart';
 
-/// Manages user session, including login state and user data.
+/// Manages user_bloc session, including login state and user_bloc data.
 class SessionController {
   /// Instance of local storage class for session persistence
   final LocalStorage sharedPrefClass = LocalStorage();
@@ -11,10 +11,10 @@ class SessionController {
   /// Singleton instance of [SessionController]
   static final SessionController _session = SessionController._internal();
 
-  /// Holds the logged-in user details
+  /// Holds the logged-in user_bloc details
   static UserModel user = UserModel();
 
-  /// Flag to check if user is logged in
+  /// Flag to check if user_bloc is logged in
   static bool isLogin = false; // Default to false
 
   /// Private constructor to ensure only one instance is created
@@ -25,21 +25,21 @@ class SessionController {
     return _session;
   }
 
-  /// Saves user data and login status in local storage
+  /// Saves user_bloc data and login status in local storage
   Future<void> saveUserPreference(dynamic user) async {
     try {
-      // Store user data securely
+      // Store user_bloc data securely
       await sharedPrefClass.setValue('token', jsonEncode(user));
 
       // Store login status
       await sharedPrefClass.setValue('isLogin', 'true');
       isLogin = true; // Update session flag
     } catch (e) {
-      debugPrint("Error saving user preference: ${e.toString()}");
+      debugPrint("Error saving user_bloc preference: ${e.toString()}");
     }
   }
 
-  /// Retrieves user data and login status from local storage
+  /// Retrieves user_bloc data and login status from local storage
   Future<void> getUserFromPreference() async {
     try {
       String? userData = await sharedPrefClass.readValue('token');
@@ -49,24 +49,24 @@ class SessionController {
         try {
           SessionController.user = UserModel.fromJson(jsonDecode(userData));
         } catch (e) {
-          debugPrint("Error decoding user data: ${e.toString()}");
-          user = UserModel(); // Reset user data in case of an error
+          debugPrint("Error decoding user_bloc data: ${e.toString()}");
+          user = UserModel(); // Reset user_bloc data in case of an error
         }
       }
 
       // Check login status
       isLogin = isLoginData == 'true';
     } catch (e) {
-      debugPrint("Error retrieving user preference: ${e.toString()}");
+      debugPrint("Error retrieving user_bloc preference: ${e.toString()}");
     }
   }
 
-  /// Clears user session by deleting stored credentials
+  /// Clears user_bloc session by deleting stored credentials
   Future<void> clearSession() async {
     try {
       await sharedPrefClass.deleteValue('token');
       await sharedPrefClass.deleteValue('isLogin');
-      user = UserModel(); // Reset user data
+      user = UserModel(); // Reset user_bloc data
       isLogin = false; // Set login status to false
     } catch (e) {
       debugPrint("Error clearing session: ${e.toString()}");
