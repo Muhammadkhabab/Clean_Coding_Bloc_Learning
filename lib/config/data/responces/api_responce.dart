@@ -12,6 +12,9 @@ class ApiResponse<T> {
   ApiResponse.completed(T data) : this._(status: Status.completed, data: data);
 
   ApiResponse.error(String message) : this._(status: Status.error, message: message);
+  
+ // ✅ Default instance to prevent errors
+  static ApiResponse<String> defaultResponse = ApiResponse.completed('Default Success Response');
 
   @override
   String toString() {

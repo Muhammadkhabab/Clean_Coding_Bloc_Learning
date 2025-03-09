@@ -18,7 +18,7 @@ class _EmailInputWidgetState extends State<EmailInputWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LogInBloc, LogInState>(
+    return BlocBuilder<LogInBloc, LogInStates>(
       buildWhen: (current, previous) => false,
       builder: (context, state) {
         log('build email');
