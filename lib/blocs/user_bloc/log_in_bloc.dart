@@ -6,34 +6,34 @@ import 'package:clean_coding_project/services/session_manager/session_controller
 import 'package:equatable/equatable.dart';
 
 part 'log_in_event.dart';
-part 'log_in_state.dart';
+part 'log_in_states.dart';
 
-class LogInBloc extends Bloc<LogInEvent, LogInState> {
+class LogInBloc extends Bloc<LogInEvent, LogInStates> {
   AuthApiRepository authApiRepository;
 
-  LogInBloc({required this.authApiRepository}) : super(LogInState()) {
+  LogInBloc({required this.authApiRepository}) : super(LogInStates()) {
     on<EmailChanged>(_onEmailChange);
     on<PasswordChange>(_onPasswordChange);
     on<TogglePasswordVisibility>(_onPasswordVisibility);
     on<LogInApi>(_onSubmitted);
   }
 
-  void _onEmailChange(EmailChanged event, Emitter<LogInState> emit) {
+  void _onEmailChange(EmailChanged event, Emitter<LogInStates> emit) {
     emit(state.copyWith(email: event.email));
   }
 
-  void _onPasswordChange(PasswordChange event, Emitter<LogInState> emit) {
+  void _onPasswordChange(PasswordChange event, Emitter<LogInStates> emit) {
     emit(state.copyWith(password: event.password));
   }
 
   void _onPasswordVisibility(
     TogglePasswordVisibility event,
-    Emitter<LogInState> emit,
+    Emitter<LogInStates> emit,
   ) {
     emit(state.copyWith(isPasswordVisible: !state.isPasswordVisible));
   }
 
-  Future<void> _onSubmitted(LogInApi event, Emitter<LogInState> emit) async {
+  Future<void> _onSubmitted(LogInApi event, Emitter<LogInStates> emit) async {
     //   {
     //     "email": "eve.holt@reqres.in",
     //     "password": "cityslicka"
