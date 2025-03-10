@@ -6,4 +6,4 @@ library;
 //this is the barrel file we export all the screen in one file that screen we import int he routes screen
 export 'splash/splash.dart';
 export 'auth/login/login.dart';
-export 'home/home.dart';
+export 'home/tv_show_screen.dart';
