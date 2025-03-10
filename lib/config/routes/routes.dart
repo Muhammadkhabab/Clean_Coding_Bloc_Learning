@@ -10,7 +10,7 @@ class Routes {
       case RoutesName.login:
         return MaterialPageRoute(builder: (BuildContext context) => LogInView());
       case RoutesName.home:
-        return MaterialPageRoute(builder: (BuildContext context) => const HomeView());
+        return MaterialPageRoute(builder: (BuildContext context) => const TVShowScreen());
 
       default:
         return MaterialPageRoute(

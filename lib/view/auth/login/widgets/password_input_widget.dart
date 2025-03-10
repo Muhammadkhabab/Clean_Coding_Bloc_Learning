@@ -19,7 +19,7 @@ class _PasswordInputWidgetState extends State<PasswordInputWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LogInBloc, LogInState>(
+    return BlocBuilder<LogInBloc, LogInStates>(
       buildWhen:
           (current, previous) =>
               previous.isPasswordVisible != current.isPasswordVisible,

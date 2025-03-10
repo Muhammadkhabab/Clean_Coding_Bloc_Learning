@@ -14,7 +14,7 @@ class SubmitButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<LogInBloc, LogInState>(
+    return BlocListener<LogInBloc, LogInStates>(
       listenWhen: (current, previous) => current.logInApiResponse != previous.logInApiResponse,
       listener: (context, state) {
         if (state.logInApiResponse.status == Status.error) {
@@ -24,7 +24,7 @@ class SubmitButton extends StatelessWidget {
           Navigator.pushNamed(context, RoutesName.home);
         }
       },
-      child: BlocBuilder<LogInBloc, LogInState>(
+      child: BlocBuilder<LogInBloc, LogInStates>(
         builder: (context, state) {
           return CustomButton(
             onPressed: () {
