@@ -15,48 +15,55 @@ final _privateConstructorUsedError = UnsupportedError(
   'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
 );
 
-TVShowModel _$TVShowModelFromJson(Map<String, dynamic> json) {
-  return _TVShowModel.fromJson(json);
+TvShowsListModel _$TvShowsListModelFromJson(Map<String, dynamic> json) {
+  return _TvShowsListModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$TVShowModel {
-  int get total => throw _privateConstructorUsedError;
-  int get page => throw _privateConstructorUsedError;
-  int get pages => throw _privateConstructorUsedError;
-  List<TVShow> get tv_shows => throw _privateConstructorUsedError;
+mixin _$TvShowsListModel {
+  int get total =>
+      throw _privateConstructorUsedError; // Total number of TV shows
+  int get page => throw _privateConstructorUsedError; // Current page number
+  int get pages => throw _privateConstructorUsedError; // Total number of pages
+  @JsonKey(name: 'tv_shows')
+  List<TvShows> get tvShow => throw _privateConstructorUsedError;
 
-  /// Serializes this TVShowModel to a JSON map.
+  /// Serializes this TvShowsListModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of TVShowModel
+  /// Create a copy of TvShowsListModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $TVShowModelCopyWith<TVShowModel> get copyWith =>
+  $TvShowsListModelCopyWith<TvShowsListModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TVShowModelCopyWith<$Res> {
-  factory $TVShowModelCopyWith(
-    TVShowModel value,
-    $Res Function(TVShowModel) then,
-  ) = _$TVShowModelCopyWithImpl<$Res, TVShowModel>;
+abstract class $TvShowsListModelCopyWith<$Res> {
+  factory $TvShowsListModelCopyWith(
+    TvShowsListModel value,
+    $Res Function(TvShowsListModel) then,
+  ) = _$TvShowsListModelCopyWithImpl<$Res, TvShowsListModel>;
   @useResult
-  $Res call({int total, int page, int pages, List<TVShow> tv_shows});
+  $Res call({
+    int total,
+    int page,
+    int pages,
+    @JsonKey(name: 'tv_shows') List<TvShows> tvShow,
+  });
 }
 
 /// @nodoc
-class _$TVShowModelCopyWithImpl<$Res, $Val extends TVShowModel>
-    implements $TVShowModelCopyWith<$Res> {
-  _$TVShowModelCopyWithImpl(this._value, this._then);
+class _$TvShowsListModelCopyWithImpl<$Res, $Val extends TvShowsListModel>
+    implements $TvShowsListModelCopyWith<$Res> {
+  _$TvShowsListModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of TVShowModel
+  /// Create a copy of TvShowsListModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -64,7 +71,7 @@ class _$TVShowModelCopyWithImpl<$Res, $Val extends TVShowModel>
     Object? total = null,
     Object? page = null,
     Object? pages = null,
-    Object? tv_shows = null,
+    Object? tvShow = null,
   }) {
     return _then(
       _value.copyWith(
@@ -83,11 +90,11 @@ class _$TVShowModelCopyWithImpl<$Res, $Val extends TVShowModel>
                     ? _value.pages
                     : pages // ignore: cast_nullable_to_non_nullable
                         as int,
-            tv_shows:
-                null == tv_shows
-                    ? _value.tv_shows
-                    : tv_shows // ignore: cast_nullable_to_non_nullable
-                        as List<TVShow>,
+            tvShow:
+                null == tvShow
+                    ? _value.tvShow
+                    : tvShow // ignore: cast_nullable_to_non_nullable
+                        as List<TvShows>,
           )
           as $Val,
     );
@@ -95,27 +102,32 @@ class _$TVShowModelCopyWithImpl<$Res, $Val extends TVShowModel>
 }
 
 /// @nodoc
-abstract class _$$TVShowModelImplCopyWith<$Res>
-    implements $TVShowModelCopyWith<$Res> {
-  factory _$$TVShowModelImplCopyWith(
-    _$TVShowModelImpl value,
-    $Res Function(_$TVShowModelImpl) then,
-  ) = __$$TVShowModelImplCopyWithImpl<$Res>;
+abstract class _$$TvShowsListModelImplCopyWith<$Res>
+    implements $TvShowsListModelCopyWith<$Res> {
+  factory _$$TvShowsListModelImplCopyWith(
+    _$TvShowsListModelImpl value,
+    $Res Function(_$TvShowsListModelImpl) then,
+  ) = __$$TvShowsListModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int total, int page, int pages, List<TVShow> tv_shows});
+  $Res call({
+    int total,
+    int page,
+    int pages,
+    @JsonKey(name: 'tv_shows') List<TvShows> tvShow,
+  });
 }
 
 /// @nodoc
-class __$$TVShowModelImplCopyWithImpl<$Res>
-    extends _$TVShowModelCopyWithImpl<$Res, _$TVShowModelImpl>
-    implements _$$TVShowModelImplCopyWith<$Res> {
-  __$$TVShowModelImplCopyWithImpl(
-    _$TVShowModelImpl _value,
-    $Res Function(_$TVShowModelImpl) _then,
+class __$$TvShowsListModelImplCopyWithImpl<$Res>
+    extends _$TvShowsListModelCopyWithImpl<$Res, _$TvShowsListModelImpl>
+    implements _$$TvShowsListModelImplCopyWith<$Res> {
+  __$$TvShowsListModelImplCopyWithImpl(
+    _$TvShowsListModelImpl _value,
+    $Res Function(_$TvShowsListModelImpl) _then,
   ) : super(_value, _then);
 
-  /// Create a copy of TVShowModel
+  /// Create a copy of TvShowsListModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -123,10 +135,10 @@ class __$$TVShowModelImplCopyWithImpl<$Res>
     Object? total = null,
     Object? page = null,
     Object? pages = null,
-    Object? tv_shows = null,
+    Object? tvShow = null,
   }) {
     return _then(
-      _$TVShowModelImpl(
+      _$TvShowsListModelImpl(
         total:
             null == total
                 ? _value.total
@@ -142,11 +154,11 @@ class __$$TVShowModelImplCopyWithImpl<$Res>
                 ? _value.pages
                 : pages // ignore: cast_nullable_to_non_nullable
                     as int,
-        tv_shows:
-            null == tv_shows
-                ? _value._tv_shows
-                : tv_shows // ignore: cast_nullable_to_non_nullable
-                    as List<TVShow>,
+        tvShow:
+            null == tvShow
+                ? _value._tvShow
+                : tvShow // ignore: cast_nullable_to_non_nullable
+                    as List<TvShows>,
       ),
     );
   }
@@ -154,45 +166,53 @@ class __$$TVShowModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$TVShowModelImpl implements _TVShowModel {
-  const _$TVShowModelImpl({
-    required this.total,
-    required this.page,
-    required this.pages,
-    required final List<TVShow> tv_shows,
-  }) : _tv_shows = tv_shows;
+class _$TvShowsListModelImpl implements _TvShowsListModel {
+  _$TvShowsListModelImpl({
+    this.total = 0,
+    this.page = 0,
+    this.pages = 0,
+    @JsonKey(name: 'tv_shows') final List<TvShows> tvShow = const [],
+  }) : _tvShow = tvShow;
 
-  factory _$TVShowModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TVShowModelImplFromJson(json);
+  factory _$TvShowsListModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TvShowsListModelImplFromJson(json);
 
   @override
+  @JsonKey()
   final int total;
+  // Total number of TV shows
   @override
+  @JsonKey()
   final int page;
+  // Current page number
   @override
+  @JsonKey()
   final int pages;
-  final List<TVShow> _tv_shows;
+  // Total number of pages
+  final List<TvShows> _tvShow;
+  // Total number of pages
   @override
-  List<TVShow> get tv_shows {
-    if (_tv_shows is EqualUnmodifiableListView) return _tv_shows;
+  @JsonKey(name: 'tv_shows')
+  List<TvShows> get tvShow {
+    if (_tvShow is EqualUnmodifiableListView) return _tvShow;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_tv_shows);
+    return EqualUnmodifiableListView(_tvShow);
   }
 
   @override
   String toString() {
-    return 'TVShowModel(total: $total, page: $page, pages: $pages, tv_shows: $tv_shows)';
+    return 'TvShowsListModel(total: $total, page: $page, pages: $pages, tvShow: $tvShow)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TVShowModelImpl &&
+            other is _$TvShowsListModelImpl &&
             (identical(other.total, total) || other.total == total) &&
             (identical(other.page, page) || other.page == page) &&
             (identical(other.pages, pages) || other.pages == pages) &&
-            const DeepCollectionEquality().equals(other._tv_shows, _tv_shows));
+            const DeepCollectionEquality().equals(other._tvShow, _tvShow));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -202,105 +222,117 @@ class _$TVShowModelImpl implements _TVShowModel {
     total,
     page,
     pages,
-    const DeepCollectionEquality().hash(_tv_shows),
+    const DeepCollectionEquality().hash(_tvShow),
   );
 
-  /// Create a copy of TVShowModel
+  /// Create a copy of TvShowsListModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$TVShowModelImplCopyWith<_$TVShowModelImpl> get copyWith =>
-      __$$TVShowModelImplCopyWithImpl<_$TVShowModelImpl>(this, _$identity);
+  _$$TvShowsListModelImplCopyWith<_$TvShowsListModelImpl> get copyWith =>
+      __$$TvShowsListModelImplCopyWithImpl<_$TvShowsListModelImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TVShowModelImplToJson(this);
+    return _$$TvShowsListModelImplToJson(this);
   }
 }
 
-abstract class _TVShowModel implements TVShowModel {
-  const factory _TVShowModel({
-    required final int total,
-    required final int page,
-    required final int pages,
-    required final List<TVShow> tv_shows,
-  }) = _$TVShowModelImpl;
+abstract class _TvShowsListModel implements TvShowsListModel {
+  factory _TvShowsListModel({
+    final int total,
+    final int page,
+    final int pages,
+    @JsonKey(name: 'tv_shows') final List<TvShows> tvShow,
+  }) = _$TvShowsListModelImpl;
 
-  factory _TVShowModel.fromJson(Map<String, dynamic> json) =
-      _$TVShowModelImpl.fromJson;
+  factory _TvShowsListModel.fromJson(Map<String, dynamic> json) =
+      _$TvShowsListModelImpl.fromJson;
 
   @override
-  int get total;
+  int get total; // Total number of TV shows
   @override
-  int get page;
+  int get page; // Current page number
   @override
-  int get pages;
+  int get pages; // Total number of pages
   @override
-  List<TVShow> get tv_shows;
+  @JsonKey(name: 'tv_shows')
+  List<TvShows> get tvShow;
 
-  /// Create a copy of TVShowModel
+  /// Create a copy of TvShowsListModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TVShowModelImplCopyWith<_$TVShowModelImpl> get copyWith =>
+  _$$TvShowsListModelImplCopyWith<_$TvShowsListModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-TVShow _$TVShowFromJson(Map<String, dynamic> json) {
-  return _TVShow.fromJson(json);
+TvShows _$TvShowsFromJson(Map<String, dynamic> json) {
+  return _TvShows.fromJson(json);
 }
 
 /// @nodoc
-mixin _$TVShow {
-  int get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get permalink => throw _privateConstructorUsedError;
-  String get start_date => throw _privateConstructorUsedError;
-  String? get end_date => throw _privateConstructorUsedError;
-  String get country => throw _privateConstructorUsedError;
-  String get network => throw _privateConstructorUsedError;
-  String get status => throw _privateConstructorUsedError;
-  String get image_thumbnail_path => throw _privateConstructorUsedError;
+mixin _$TvShows {
+  int get id => throw _privateConstructorUsedError; // Unique ID of the TV show
+  @JsonKey(name: 'name')
+  String get name => throw _privateConstructorUsedError; // Name of the TV show
+  String get permalink =>
+      throw _privateConstructorUsedError; // Permalink of the TV show
+  @JsonKey(name: 'start_date')
+  String get startDate => throw _privateConstructorUsedError; // Start date of the TV show
+  @JsonKey(name: 'end_date')
+  String get endDate => throw _privateConstructorUsedError; // End date of the TV show (nullable)
+  String get country =>
+      throw _privateConstructorUsedError; // Country of the TV show
+  String get network =>
+      throw _privateConstructorUsedError; // Network of the TV show
+  String get status =>
+      throw _privateConstructorUsedError; // Status of the TV show (Running/Ended)
+  @JsonKey(name: 'image_thumbnail_path')
+  String get imageThumbnailPath => throw _privateConstructorUsedError;
 
-  /// Serializes this TVShow to a JSON map.
+  /// Serializes this TvShows to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of TVShow
+  /// Create a copy of TvShows
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $TVShowCopyWith<TVShow> get copyWith => throw _privateConstructorUsedError;
+  $TvShowsCopyWith<TvShows> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TVShowCopyWith<$Res> {
-  factory $TVShowCopyWith(TVShow value, $Res Function(TVShow) then) =
-      _$TVShowCopyWithImpl<$Res, TVShow>;
+abstract class $TvShowsCopyWith<$Res> {
+  factory $TvShowsCopyWith(TvShows value, $Res Function(TvShows) then) =
+      _$TvShowsCopyWithImpl<$Res, TvShows>;
   @useResult
   $Res call({
     int id,
-    String name,
+    @JsonKey(name: 'name') String name,
     String permalink,
-    String start_date,
-    String? end_date,
+    @JsonKey(name: 'start_date') String startDate,
+    @JsonKey(name: 'end_date') String endDate,
     String country,
     String network,
     String status,
-    String image_thumbnail_path,
+    @JsonKey(name: 'image_thumbnail_path') String imageThumbnailPath,
   });
 }
 
 /// @nodoc
-class _$TVShowCopyWithImpl<$Res, $Val extends TVShow>
-    implements $TVShowCopyWith<$Res> {
-  _$TVShowCopyWithImpl(this._value, this._then);
+class _$TvShowsCopyWithImpl<$Res, $Val extends TvShows>
+    implements $TvShowsCopyWith<$Res> {
+  _$TvShowsCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of TVShow
+  /// Create a copy of TvShows
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -308,12 +340,12 @@ class _$TVShowCopyWithImpl<$Res, $Val extends TVShow>
     Object? id = null,
     Object? name = null,
     Object? permalink = null,
-    Object? start_date = null,
-    Object? end_date = freezed,
+    Object? startDate = null,
+    Object? endDate = null,
     Object? country = null,
     Object? network = null,
     Object? status = null,
-    Object? image_thumbnail_path = null,
+    Object? imageThumbnailPath = null,
   }) {
     return _then(
       _value.copyWith(
@@ -332,16 +364,16 @@ class _$TVShowCopyWithImpl<$Res, $Val extends TVShow>
                     ? _value.permalink
                     : permalink // ignore: cast_nullable_to_non_nullable
                         as String,
-            start_date:
-                null == start_date
-                    ? _value.start_date
-                    : start_date // ignore: cast_nullable_to_non_nullable
+            startDate:
+                null == startDate
+                    ? _value.startDate
+                    : startDate // ignore: cast_nullable_to_non_nullable
                         as String,
-            end_date:
-                freezed == end_date
-                    ? _value.end_date
-                    : end_date // ignore: cast_nullable_to_non_nullable
-                        as String?,
+            endDate:
+                null == endDate
+                    ? _value.endDate
+                    : endDate // ignore: cast_nullable_to_non_nullable
+                        as String,
             country:
                 null == country
                     ? _value.country
@@ -357,10 +389,10 @@ class _$TVShowCopyWithImpl<$Res, $Val extends TVShow>
                     ? _value.status
                     : status // ignore: cast_nullable_to_non_nullable
                         as String,
-            image_thumbnail_path:
-                null == image_thumbnail_path
-                    ? _value.image_thumbnail_path
-                    : image_thumbnail_path // ignore: cast_nullable_to_non_nullable
+            imageThumbnailPath:
+                null == imageThumbnailPath
+                    ? _value.imageThumbnailPath
+                    : imageThumbnailPath // ignore: cast_nullable_to_non_nullable
                         as String,
           )
           as $Val,
@@ -369,36 +401,36 @@ class _$TVShowCopyWithImpl<$Res, $Val extends TVShow>
 }
 
 /// @nodoc
-abstract class _$$TVShowImplCopyWith<$Res> implements $TVShowCopyWith<$Res> {
-  factory _$$TVShowImplCopyWith(
-    _$TVShowImpl value,
-    $Res Function(_$TVShowImpl) then,
-  ) = __$$TVShowImplCopyWithImpl<$Res>;
+abstract class _$$TvShowsImplCopyWith<$Res> implements $TvShowsCopyWith<$Res> {
+  factory _$$TvShowsImplCopyWith(
+    _$TvShowsImpl value,
+    $Res Function(_$TvShowsImpl) then,
+  ) = __$$TvShowsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({
     int id,
-    String name,
+    @JsonKey(name: 'name') String name,
     String permalink,
-    String start_date,
-    String? end_date,
+    @JsonKey(name: 'start_date') String startDate,
+    @JsonKey(name: 'end_date') String endDate,
     String country,
     String network,
     String status,
-    String image_thumbnail_path,
+    @JsonKey(name: 'image_thumbnail_path') String imageThumbnailPath,
   });
 }
 
 /// @nodoc
-class __$$TVShowImplCopyWithImpl<$Res>
-    extends _$TVShowCopyWithImpl<$Res, _$TVShowImpl>
-    implements _$$TVShowImplCopyWith<$Res> {
-  __$$TVShowImplCopyWithImpl(
-    _$TVShowImpl _value,
-    $Res Function(_$TVShowImpl) _then,
+class __$$TvShowsImplCopyWithImpl<$Res>
+    extends _$TvShowsCopyWithImpl<$Res, _$TvShowsImpl>
+    implements _$$TvShowsImplCopyWith<$Res> {
+  __$$TvShowsImplCopyWithImpl(
+    _$TvShowsImpl _value,
+    $Res Function(_$TvShowsImpl) _then,
   ) : super(_value, _then);
 
-  /// Create a copy of TVShow
+  /// Create a copy of TvShows
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -406,15 +438,15 @@ class __$$TVShowImplCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? permalink = null,
-    Object? start_date = null,
-    Object? end_date = freezed,
+    Object? startDate = null,
+    Object? endDate = null,
     Object? country = null,
     Object? network = null,
     Object? status = null,
-    Object? image_thumbnail_path = null,
+    Object? imageThumbnailPath = null,
   }) {
     return _then(
-      _$TVShowImpl(
+      _$TvShowsImpl(
         id:
             null == id
                 ? _value.id
@@ -430,16 +462,16 @@ class __$$TVShowImplCopyWithImpl<$Res>
                 ? _value.permalink
                 : permalink // ignore: cast_nullable_to_non_nullable
                     as String,
-        start_date:
-            null == start_date
-                ? _value.start_date
-                : start_date // ignore: cast_nullable_to_non_nullable
+        startDate:
+            null == startDate
+                ? _value.startDate
+                : startDate // ignore: cast_nullable_to_non_nullable
                     as String,
-        end_date:
-            freezed == end_date
-                ? _value.end_date
-                : end_date // ignore: cast_nullable_to_non_nullable
-                    as String?,
+        endDate:
+            null == endDate
+                ? _value.endDate
+                : endDate // ignore: cast_nullable_to_non_nullable
+                    as String,
         country:
             null == country
                 ? _value.country
@@ -455,10 +487,10 @@ class __$$TVShowImplCopyWithImpl<$Res>
                 ? _value.status
                 : status // ignore: cast_nullable_to_non_nullable
                     as String,
-        image_thumbnail_path:
-            null == image_thumbnail_path
-                ? _value.image_thumbnail_path
-                : image_thumbnail_path // ignore: cast_nullable_to_non_nullable
+        imageThumbnailPath:
+            null == imageThumbnailPath
+                ? _value.imageThumbnailPath
+                : imageThumbnailPath // ignore: cast_nullable_to_non_nullable
                     as String,
       ),
     );
@@ -467,64 +499,80 @@ class __$$TVShowImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$TVShowImpl implements _TVShow {
-  const _$TVShowImpl({
-    required this.id,
-    required this.name,
-    required this.permalink,
-    required this.start_date,
-    this.end_date,
-    required this.country,
-    required this.network,
-    required this.status,
-    required this.image_thumbnail_path,
+class _$TvShowsImpl implements _TvShows {
+  _$TvShowsImpl({
+    this.id = 0,
+    @JsonKey(name: 'name') this.name = '',
+    this.permalink = '',
+    @JsonKey(name: 'start_date') this.startDate = '',
+    @JsonKey(name: 'end_date') this.endDate = '',
+    this.country = '',
+    this.network = '',
+    this.status = '',
+    @JsonKey(name: 'image_thumbnail_path') this.imageThumbnailPath = '',
   });
 
-  factory _$TVShowImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TVShowImplFromJson(json);
+  factory _$TvShowsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TvShowsImplFromJson(json);
 
   @override
+  @JsonKey()
   final int id;
+  // Unique ID of the TV show
   @override
+  @JsonKey(name: 'name')
   final String name;
+  // Name of the TV show
   @override
+  @JsonKey()
   final String permalink;
+  // Permalink of the TV show
   @override
-  final String start_date;
+  @JsonKey(name: 'start_date')
+  final String startDate;
+  // Start date of the TV show
   @override
-  final String? end_date;
+  @JsonKey(name: 'end_date')
+  final String endDate;
+  // End date of the TV show (nullable)
   @override
+  @JsonKey()
   final String country;
+  // Country of the TV show
   @override
+  @JsonKey()
   final String network;
+  // Network of the TV show
   @override
+  @JsonKey()
   final String status;
+  // Status of the TV show (Running/Ended)
   @override
-  final String image_thumbnail_path;
+  @JsonKey(name: 'image_thumbnail_path')
+  final String imageThumbnailPath;
 
   @override
   String toString() {
-    return 'TVShow(id: $id, name: $name, permalink: $permalink, start_date: $start_date, end_date: $end_date, country: $country, network: $network, status: $status, image_thumbnail_path: $image_thumbnail_path)';
+    return 'TvShows(id: $id, name: $name, permalink: $permalink, startDate: $startDate, endDate: $endDate, country: $country, network: $network, status: $status, imageThumbnailPath: $imageThumbnailPath)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TVShowImpl &&
+            other is _$TvShowsImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.permalink, permalink) ||
                 other.permalink == permalink) &&
-            (identical(other.start_date, start_date) ||
-                other.start_date == start_date) &&
-            (identical(other.end_date, end_date) ||
-                other.end_date == end_date) &&
+            (identical(other.startDate, startDate) ||
+                other.startDate == startDate) &&
+            (identical(other.endDate, endDate) || other.endDate == endDate) &&
             (identical(other.country, country) || other.country == country) &&
             (identical(other.network, network) || other.network == network) &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.image_thumbnail_path, image_thumbnail_path) ||
-                other.image_thumbnail_path == image_thumbnail_path));
+            (identical(other.imageThumbnailPath, imageThumbnailPath) ||
+                other.imageThumbnailPath == imageThumbnailPath));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -534,66 +582,70 @@ class _$TVShowImpl implements _TVShow {
     id,
     name,
     permalink,
-    start_date,
-    end_date,
+    startDate,
+    endDate,
     country,
     network,
     status,
-    image_thumbnail_path,
+    imageThumbnailPath,
   );
 
-  /// Create a copy of TVShow
+  /// Create a copy of TvShows
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$TVShowImplCopyWith<_$TVShowImpl> get copyWith =>
-      __$$TVShowImplCopyWithImpl<_$TVShowImpl>(this, _$identity);
+  _$$TvShowsImplCopyWith<_$TvShowsImpl> get copyWith =>
+      __$$TvShowsImplCopyWithImpl<_$TvShowsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TVShowImplToJson(this);
+    return _$$TvShowsImplToJson(this);
   }
 }
 
-abstract class _TVShow implements TVShow {
-  const factory _TVShow({
-    required final int id,
-    required final String name,
-    required final String permalink,
-    required final String start_date,
-    final String? end_date,
-    required final String country,
-    required final String network,
-    required final String status,
-    required final String image_thumbnail_path,
-  }) = _$TVShowImpl;
+abstract class _TvShows implements TvShows {
+  factory _TvShows({
+    final int id,
+    @JsonKey(name: 'name') final String name,
+    final String permalink,
+    @JsonKey(name: 'start_date') final String startDate,
+    @JsonKey(name: 'end_date') final String endDate,
+    final String country,
+    final String network,
+    final String status,
+    @JsonKey(name: 'image_thumbnail_path') final String imageThumbnailPath,
+  }) = _$TvShowsImpl;
 
-  factory _TVShow.fromJson(Map<String, dynamic> json) = _$TVShowImpl.fromJson;
+  factory _TvShows.fromJson(Map<String, dynamic> json) = _$TvShowsImpl.fromJson;
 
   @override
-  int get id;
+  int get id; // Unique ID of the TV show
   @override
-  String get name;
+  @JsonKey(name: 'name')
+  String get name; // Name of the TV show
   @override
-  String get permalink;
+  String get permalink; // Permalink of the TV show
   @override
-  String get start_date;
+  @JsonKey(name: 'start_date')
+  String get startDate; // Start date of the TV show
   @override
-  String? get end_date;
+  @JsonKey(name: 'end_date')
+  String get endDate; // End date of the TV show (nullable)
   @override
-  String get country;
+  String get country; // Country of the TV show
   @override
-  String get network;
+  String get network; // Network of the TV show
   @override
-  String get status;
+  String get status; // Status of the TV show (Running/Ended)
   @override
-  String get image_thumbnail_path;
+  @JsonKey(name: 'image_thumbnail_path')
+  String get imageThumbnailPath;
 
-  /// Create a copy of TVShow
+  /// Create a copy of TvShows
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TVShowImplCopyWith<_$TVShowImpl> get copyWith =>
+  _$$TvShowsImplCopyWith<_$TvShowsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
